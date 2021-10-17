@@ -27,8 +27,7 @@ provider:
 
   # you can overwrite defaults here
   #  stage: dev
-  region: us-east-1
-  timeout: 60
+  region: eu-central-1
 
   # you can add statements to the Lambda function's IAM Role here
   #  iamRoleStatements:
@@ -68,6 +67,18 @@ functions:
     events:
       - http:
           path: api/get-auth-url
+          method: get
+  getAccessToken:
+    handler: handler.getAccessToken
+    events:
+      - http:
+          path: api/token/{code}
+          method: get
+  getCalendarEvents:
+    handler: handler.getCalendarEvents
+    events:
+      - http:
+          path: api/get-events/{access_token}
           method: get
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -120,3 +131,4 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
