@@ -36,7 +36,7 @@ describe("<Event /> component", () => {
 
     test("showLess button if clicked renders summary view", () => {
         EventWrapper.find(".showLess").simulate("click");
-        expect(EventWrapper.find(".event-description")).toHaveLength(1);
+        expect(EventWrapper.find(".summary")).toHaveLength(1);
     })
 
 });
