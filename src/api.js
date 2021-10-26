@@ -1,14 +1,17 @@
 /**
- *
- * @param {*} events:
  * The following function takes an events array, then uses map to create a new array with only locations.
  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
  * The Set will remove all duplicates from the array.
  */
-
-import { mockData } from './mock-data';
 import axios from 'axios';
 import NProgress from 'nprogress';
+import { mockData } from './mock-data';
+
+export const extractLocations = (events) => {
+  var extractLocations = events.map((event) => event.location);
+  var locations = [...new Set(extractLocations)];
+  return locations;
+};
 
 const checkToken = async (accessToken) => {
   const result = await fetch(
@@ -16,18 +19,15 @@ const checkToken = async (accessToken) => {
   )
   .then((res) => res.json())
   .catch((error) => error.json());
-
   return result;
 };
 
 export const getEvents = async () => {
   NProgress.start();
-
   if (window.location.href.startsWith('http://localhost')) {
     NProgress.done();
     return mockData;
   }
-
   const token = await getAccessToken();
   if (token) {
     removeQuery();
@@ -43,11 +43,7 @@ export const getEvents = async () => {
     }
   };
 
-export const extractLocations = (events) => {
-  var extractLocations = events.map((event) => event.location);
-  var locations = [...new Set(extractLocations)];
-  return locations;
-};
+
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
@@ -62,8 +58,8 @@ export const getAccessToken = async () => {
       const results = await axios.get(
         "https://bdsyywwil7.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
       );
-      const { authURL } = results.data;
-      return (window.location.href = authURL);
+      const { authUrl } = results.data;
+      return (window.location.href = authUrl);
     }
     return code && getToken(code);
   }
@@ -94,5 +90,6 @@ const getToken = async (code) => {
   access_token && localStorage.setItem("access_token", access_token);
   
   return access_token;
-
 };
+
+
