@@ -6,16 +6,8 @@ class Event extends Component {
     collapsed: true,
   };
 
-  handleOnClickShowMore = () => {
-    this.setState({
-      collapsed: false,
-    });
-  };
-
-  handleOnClickShowLess = () => {
-    this.setState({
-      collapsed: true,
-    });
+  handleOnClickButton = () => {
+    this.setState((prevState) => ({ collapsed: !prevState.collapsed }));
   };
 
   render() {
@@ -28,7 +20,7 @@ class Event extends Component {
           <li className="event-date">{event.start.dateTime}</li>
           <li className="event-location">{event.location}</li>
         </ul>
-        <Button className="showMore" onClick={this.handleOnClickShowMore}>
+        <Button className="showMore" onClick={this.handleOnClickButton}>
           Show details
         </Button>
         {this.state.collapsed === false && (
@@ -37,7 +29,7 @@ class Event extends Component {
         {this.state.collapsed === false && (
           <Button
             className="showLess"
-            onlick={() => this.handleOnClickShowLess()}
+            onClick={() => this.handleOnClickButton()}
           >
             Hide details
           </Button>
