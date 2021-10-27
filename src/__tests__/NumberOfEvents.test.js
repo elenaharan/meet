@@ -9,7 +9,7 @@ describe('<NumberOfEvents /> component', () => {
     })
    
     test('renders input textbox', () => {
-        expect(NumberOfEventsWrapper.find(".NumberOfEvents")).toHaveLength(1);  
+        expect(NumberOfEventsWrapper.find(".events-number")).toHaveLength(1);  
     });
 
     test("renders defaults number of 32 events", () => {
@@ -21,4 +21,6 @@ describe('<NumberOfEvents /> component', () => {
     NumberOfEventsWrapper.find(".events-number").simulate('change', eventObject);
     expect(NumberOfEventsWrapper.find('.events-number').prop('value')).toBe(15);
     });
+    
+
 });
