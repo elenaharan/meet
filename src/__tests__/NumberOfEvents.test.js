@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import NumberOfEvents from '../NumberOfEvents';
 
+
+
 describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsWrapper;
     beforeAll(() => {
@@ -12,15 +14,22 @@ describe('<NumberOfEvents /> component', () => {
         expect(NumberOfEventsWrapper.find(".events-number")).toHaveLength(1);  
     });
 
-    test("renders defaults number of 32 events", () => {
+    test("renders default number of 32 events", () => {
       expect(NumberOfEventsWrapper.find('.events-number').prop("value")).toEqual(32);
     });
 
     test("changes state when input changes", () => {
-    const eventObject = { target: { value: 15 }};
+    NumberOfEventsWrapper.setState({ 
+        numOfEvents: '7'
+    });
+    const eventObject = { target: { value: '3' }};
     NumberOfEventsWrapper.find(".events-number").simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.find('.events-number').prop('value')).toBe(15);
+    expect(NumberOfEventsWrapper.state('numOfEvents')).toBe('3');
     });
     
 
+    
 });
+
+
+

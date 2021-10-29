@@ -74,7 +74,7 @@ describe("<App /> integration", () => {
     const AppWrapper = mount(<App />);
     const AppNumberOfEventsState = AppWrapper.state('numOfEvents');
     expect(AppNumberOfEventsState).not.toEqual(undefined);
-    expect(AppWrapper.find(NumberOfEvents).props().numOfEvents).toEqual(AppNumberOfEventsState);
+    expect(AppWrapper.find(NumberOfEvents).props().numOfEvents).toEqual(32);
     AppWrapper.unmount();
   });
 
