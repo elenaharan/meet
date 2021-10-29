@@ -1,10 +1,13 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import App from '../App';
+import CitySearch from '../CitySearch';
+import { extractLocations } from '../api';
 import { mockData } from '../mock-data';
 import { loadFeature, defineFeature } from 'jest-cucumber';
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 defineFeature(feature, test => {
+    //Scenario 1
     test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
         given('user hasn’t searched for any city', () => {
     
@@ -22,17 +25,19 @@ defineFeature(feature, test => {
         });
     });
 
+    //Scenario 2
     test('User should see a list of suggestions when they search for a city', ({ given, when, then }) => {
+        let CitySearchWrapper;
         given('the main page is open', () => {
-    
+          CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}} locations={locations} />);
         });
     
         when('the user starts typing in the city textbox', () => {
-    
+          CitySearchWrapper.find('.city').simulate('change', { target: { value: 'Berlin' } });
         });
     
         then('the user should receive a list of cities (suggestions) that match what they’ve typed', () => {
-    
+          expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(1);
         });
     });
 

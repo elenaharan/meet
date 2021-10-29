@@ -31,16 +31,15 @@ class App extends Component {
   }
 
 
-  updateEvents = (location, eventCount) => {
+  updateEvents = (location) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
         events.filter((event) => event.location === location);
-      const eventsToShow = locationEvents.slice(0, this.state.numOfEvents);
+      const { numOfEvents } = this.state;
       if (this.mounted) {
         this.setState({
-          events: eventsToShow,
-          currentLocation: location,
+          events: locationEvents.slice(0, numOfEvents)
         });
       }
         
@@ -48,12 +47,12 @@ class App extends Component {
   }
 
 
-  updateEventCount = async (event) => {
-    const newVal = event.target.value ? event.target.value : '32';
-    await this.setState({
-      numOfEvents: newVal
+  updateEventCount = (eventCount) => {
+    const { currentLocation} = this.state;
+    this.setState({
+      numOfEvents: eventCount
     });
-    this.updateEvents(this.state.currentLocation, this.state.numOfEvents);
+    this.updateEvents(currentLocation, eventCount);
   };
 
   
