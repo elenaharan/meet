@@ -14,10 +14,10 @@ class NumberOfEvents extends Component {
       }
   
   render() {
-      console.log(this.props);
     return (
-        <div className="NumberOfEvents">
-            <input type="number" className="events-number" value={this.state.numOfEvents} onChange={(event) => this.handleNumberChanged(event)}
+        <div>
+            <p>Limit your search results</p>
+            <input type="number" className="events-number" value={this.state.numOfEvents} onChange={(e) => this.handleNumberChanged(e)}
             />
         </div>
         );
