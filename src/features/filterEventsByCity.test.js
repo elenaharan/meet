@@ -6,6 +6,7 @@ import { extractLocations } from '../api';
 import { mockData } from '../mock-data';
 import { loadFeature, defineFeature } from 'jest-cucumber';
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
+
 defineFeature(feature, test => {
     //Scenario 1
     test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
@@ -28,6 +29,7 @@ defineFeature(feature, test => {
     //Scenario 2
     test('User should see a list of suggestions when they search for a city', ({ given, when, then }) => {
         let CitySearchWrapper;
+        const locations = extractLocations(mockData);
         given('the main page is open', () => {
           CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}} locations={locations} />);
         });
@@ -37,7 +39,7 @@ defineFeature(feature, test => {
         });
     
         then('the user should receive a list of cities (suggestions) that match what they’ve typed', () => {
-          expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(1);
+          expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(2);
         });
     });
 
