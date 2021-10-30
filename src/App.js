@@ -30,6 +30,9 @@ class App extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   updateEvents = (location) => {
     getEvents().then((events) => {
@@ -56,9 +59,7 @@ class App extends Component {
 
   
 
-  componentWillUnmount() {
-    this.mounted = false;
-  }
+  
 
   render() {
 
