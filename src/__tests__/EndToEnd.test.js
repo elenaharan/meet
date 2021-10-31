@@ -35,5 +35,6 @@ describe('show/hide an event details', () => {
       await page.click('.showLess');
       const eventDetails = await page.$('.event .event-description');
       expect(eventDetails).toBeNull();
-  })
+  });
+  
 });
