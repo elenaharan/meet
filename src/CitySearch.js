@@ -25,6 +25,7 @@ class CitySearch extends Component {
     });
 
     this.props.updateEvents(suggestion);
+    this.props.updateCurrentLocation(suggestion);
   };
 
   render() {
@@ -34,7 +35,7 @@ class CitySearch extends Component {
           type="text"
           className="city"
           value={this.state.query}
-          onChange={this.handleInputChanged}
+          onChange={(e) => this.handleInputChanged(e)}
           onFocus={() => {
             this.setState({ showSuggestions: true });
           }}
