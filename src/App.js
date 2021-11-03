@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   updateEvents = (location) => {
-    console.log("testing!!");
+    console.log("testing!!!")
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
