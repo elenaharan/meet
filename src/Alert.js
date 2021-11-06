@@ -35,4 +35,20 @@ getStyle = () => {
 }
 }
 
-export { InfoAlert };
+class ErrorAlert extends Alert {
+    constructor(props) {
+        super(props);
+        this.color = 'red';
+    }
+getStyle = () => {
+    return {
+        color: this.color,
+        flex: 1,
+        padding: '20px',
+        margin: '87px',
+        marginLeft: '420px'
+    };
+}
+}
+
+export { InfoAlert, ErrorAlert };
