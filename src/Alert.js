@@ -26,6 +26,13 @@ class InfoAlert extends Alert {
         super(props);
         this.color = 'blue';
     }
+getStyle = () => {
+    return {
+      color: this.color,
+      margin: '-15px',
+      padding: '0px 10px'
+    };   
+}
 }
 
 export { InfoAlert };
