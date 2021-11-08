@@ -4,6 +4,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents, extractLocations } from "./api";
+import { NetworkAlert } from "./Alert";
 import './nprogress.css';
 
 
@@ -26,7 +27,17 @@ class App extends Component {
           events: events.slice(0, this.state.numOfEvents), 
           locations: extractLocations(events)
         });
-      }      
+      }
+      
+      if (!navigator.online) {
+        this.setState({
+          NetworkAlertText: 'You are not currently connected to the Internet'
+        });
+      } else {
+        this.setState({
+          NetworkAlertText: ''
+        });
+      };
     });
   }
 
@@ -70,13 +81,14 @@ class App extends Component {
   
 
   render() {
-
+  const { NetworkAlertText } = this.state;
    
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} updateCurrentLocation={this.updateCurrentLocation}/>
         <NumberOfEvents numOfEvents={this.state.numOfEvents} updateEventCount={this.updateEventCount} />
         <EventList events={this.state.events} />        
+        <NetworkAlert text={NetworkAlertText} />
       </div>
     );
   }

@@ -21,6 +21,7 @@ class Alert extends Component {
     }
 }
 
+//Incorrect city
 class InfoAlert extends Alert {
     constructor(props) {
         super(props);
@@ -35,6 +36,7 @@ getStyle = () => {
 }
 }
 
+//Incorrect number
 class ErrorAlert extends Alert {
     constructor(props) {
         super(props);
@@ -51,4 +53,12 @@ getStyle = () => {
 }
 }
 
-export { InfoAlert, ErrorAlert };
+//No network
+class NetworkAlert extends Alert {
+    constructor(props) {
+        super(props);
+        this.color = '#FFFF00';
+    }
+}
+
+export { InfoAlert, ErrorAlert, NetworkAlert };
