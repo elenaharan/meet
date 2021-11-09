@@ -29,7 +29,7 @@ class App extends Component {
         });
       }
       
-      if (!navigator.online) {
+      if (!navigator.onLine) {
         this.setState({
           NetworkAlertText: 'You are not currently connected to the Internet'
         });
