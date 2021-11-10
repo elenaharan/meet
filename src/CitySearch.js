@@ -14,6 +14,7 @@ class CitySearch extends Component {
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
+    
     if (suggestions.length === 0) {
       this.setState({
         query: value,

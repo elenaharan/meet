@@ -30,27 +30,22 @@ class App extends Component {
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({ events, locations: extractLocations(events) });
+          this.setState({ 
+            events: events.slice(0, this.state.numOfEvents), 
+            locations: extractLocations(events)
+          });
         }
+        if (!navigator.onLine) {
+          this.setState({
+            NetworkAlertText: 'You are not currently connected to the Internet'
+            });
+          } else {
+            this.setState({
+              NetworkAlertText: ''
+            });
+          };
       });
-    }
-    /*getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ 
-          events: events.slice(0, this.state.numOfEvents), 
-          locations: extractLocations(events)
-        });
-      }*/
-      
-    if (!navigator.onLine) {
-      this.setState({
-        NetworkAlertText: 'You are not currently connected to the Internet'
-        });
-      } else {
-        this.setState({
-          NetworkAlertText: ''
-        });
-      };
+    }   
   }
 
   componentWillUnmount() {
@@ -58,7 +53,6 @@ class App extends Component {
   }
 
   updateEvents = (location) => {
-    console.log("testing!!!")
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
