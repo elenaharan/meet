@@ -29,7 +29,7 @@ class="btn-text"
 </div>
 </div>
 <a
-href="https://elenaharan.github.io/meet/privacy.html"
+href="https://elenaharan.github.io/meet/privacyPolicy.html"
 rel="nofollow noopener"
 >
 Privacy policy
