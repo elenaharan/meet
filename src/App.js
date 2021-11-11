@@ -7,6 +7,7 @@ import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 import { NetworkAlert } from "./Alert";
 import './nprogress.css';
 import WelcomeScreen from './WelcomeScreen';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 class App extends Component {
   state = {
@@ -82,17 +83,42 @@ class App extends Component {
     })
   }
 
-  
+  //function that gets data to be used for charts
+  getData = () => {
+    const {locations, events} = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(', ').shift()
+      return {city, number};
+    })
+    return data;
+  }
 
   
 
   render() {
-  const { NetworkAlertText } = this.state;
+  const { NetworkAlertText, locations, numOfEvents } = this.state;
   if (this.state.showWelcomeScreen === undefined) return <div className = "App" />
     return (
       <div className="App">
+        <h1>Meet App</h1>
+        <h4>Choose your nearest city</h4>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} updateCurrentLocation={this.updateCurrentLocation}/>
         <NumberOfEvents numOfEvents={this.state.numOfEvents} updateEventCount={this.updateEventCount} />
+        <h4>Events in each city</h4>
+        <ScatterChart
+          width={400}
+          height={400}
+          margin={{
+            top: 20, right: 20, bottom: 20, left: 20,
+          }}
+        >
+          <CartesianGrid />
+          <XAxis type="number" dataKey="x" name="stature" unit="cm" />
+          <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Scatter data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
         <EventList events={this.state.events} />        
         <NetworkAlert text={NetworkAlertText} />
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
