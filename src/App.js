@@ -7,7 +7,7 @@ import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 import { NetworkAlert } from "./Alert";
 import './nprogress.css';
 import WelcomeScreen from './WelcomeScreen';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 class App extends Component {
   state = {
@@ -97,7 +97,7 @@ class App extends Component {
   
 
   render() {
-  const { NetworkAlertText, locations, numOfEvents } = this.state;
+  const { NetworkAlertText, locations, numOfEvents, events } = this.state;
   if (this.state.showWelcomeScreen === undefined) return <div className = "App" />
     return (
       <div className="App">
@@ -106,19 +106,18 @@ class App extends Component {
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} updateCurrentLocation={this.updateCurrentLocation}/>
         <NumberOfEvents numOfEvents={this.state.numOfEvents} updateEventCount={this.updateEventCount} />
         <h4>Events in each city</h4>
-        <ScatterChart
-          width={800}
-          height={400}
-          margin={{
+        <ResponsiveContainer height={400} >
+          <ScatterChart margin={{
             top: 20, right: 20, bottom: 20, left: 20,
           }}
         >
           <CartesianGrid />
           <XAxis type="category" dataKey="city" name="city" />
-          <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
+          <YAxis allowDecimals={false} type="number" dataKey="number" name="number of events" />
           <Tooltip cursor={{ strokeDasharray: '3 3' }} />
           <Scatter data={this.getData()} fill="#8884d8" />
         </ScatterChart>
+        </ResponsiveContainer>
         <EventList events={this.state.events} />        
         <NetworkAlert text={NetworkAlertText} />
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
