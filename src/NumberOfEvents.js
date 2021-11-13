@@ -28,7 +28,7 @@ class NumberOfEvents extends Component {
     return (
         <div>
             <ErrorAlert text={this.state.infoText} />
-            <p>Limit your search results</p>
+            <h4>Limit your search results</h4>
             <input type="number" className="events-number" value={this.state.numOfEvents} onChange={(e) => this.handleNumberChanged(e)}
             />
         </div>
