@@ -10,7 +10,7 @@ const EventGenre = ({ events }) => {
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
     const data = genres.map((genre) => {
       const value = events.filter((event) => event.summary.split(' ').includes(genre)).length;
-      return { name: genre, value };    
+      return { name: genre, value: value };    
     });
     return data;
   };
@@ -23,20 +23,19 @@ const EventGenre = ({ events }) => {
           data={data}
           cx={200}
           cy={200}
-          labelLine={true}
-          outerRadius={80}
-          fill="#8884d8"
+          labelLine={false}
+          innerRadius={30}
           dataKey="value"
-          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>
-          { 
-            data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={colors[index]} />
-            ))
-          }
+          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+          outerRadius={80}
+          >
+          {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+            ))}
         </Pie>
       </PieChart>
     </ResponsiveContainer>
   );
-}
+};
 
 export default EventGenre;
