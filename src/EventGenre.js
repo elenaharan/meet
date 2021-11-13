@@ -23,9 +23,9 @@ const EventGenre = ({ events }) => {
           data={data}
           cx='50%'
           cy='50%'
-          labelLine={false}
           innerRadius={20}
           dataKey="value"
+          fill="#8884d8"
           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
           outerRadius={80}
           >
@@ -33,7 +33,7 @@ const EventGenre = ({ events }) => {
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
             ))}
         </Pie>
-        <Legend layout="horizontal" verticalAlign="top" align="center" />
+        <Legend layout="horizontal" verticalAlign="top" align="center" height={45} />
       </PieChart>
     </ResponsiveContainer>
   );
