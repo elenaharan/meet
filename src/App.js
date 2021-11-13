@@ -106,7 +106,9 @@ class App extends Component {
         <h4>Choose your nearest city</h4>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} updateCurrentLocation={this.updateCurrentLocation}/>
         <NumberOfEvents numOfEvents={this.state.numOfEvents} updateEventCount={this.updateEventCount} />
+        
         <div className="data-vis-wrapper">
+          <h4>Events in each city</h4>
           <EventGenre events={events} />        
           <ResponsiveContainer height={400} >
             <ScatterChart margin={{

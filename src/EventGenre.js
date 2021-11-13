@@ -26,7 +26,7 @@ const EventGenre = ({ events }) => {
           innerRadius={20}
           dataKey="value"
           fill="#8884d8"
-          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+          //label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
           outerRadius={80}
           >
           {data.map((entry, index) => (
