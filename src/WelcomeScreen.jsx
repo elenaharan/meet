@@ -1,6 +1,6 @@
 import React from "react";
 import './WelcomeScreen.css';
-import background from "./backgroundImage.jpg";
+import background from "./background.jpg";
 import { Container } from "react-bootstrap";
 
 function WelcomeScreen(props) {
