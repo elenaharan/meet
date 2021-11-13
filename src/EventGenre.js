@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 
 const EventGenre = ({ events }) => {
   const [data, setData] = useState([]);
@@ -24,7 +24,7 @@ const EventGenre = ({ events }) => {
           cx='50%'
           cy='50%'
           labelLine={false}
-          innerRadius={30}
+          innerRadius={20}
           dataKey="value"
           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
           outerRadius={80}
@@ -33,6 +33,7 @@ const EventGenre = ({ events }) => {
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
             ))}
         </Pie>
+        <Legend layout="horizontal" verticalAlign="top" align="center" />
       </PieChart>
     </ResponsiveContainer>
   );
