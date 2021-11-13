@@ -1,13 +1,14 @@
 import React from "react";
 import './WelcomeScreen.css';
 import background from "./background.jpg";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 function WelcomeScreen(props) {
 return props.showWelcomeScreen ?
 (
   <Container className="WelcomeScreen">
   <img alt="background" src={background} className="background" />
+  <Row className="login">
   <div className="WelcomeScreen">
     <h1>Welcome to the Meet app</h1>
     <h4>
@@ -25,6 +26,7 @@ return props.showWelcomeScreen ?
     </div>
     <a href="https://elenaharan.github.io/meet/privacyPolicy.html" rel="nofollow noopener">Privacy policy</a>
 </div>
+</Row>
 </Container>
 )
 : null
