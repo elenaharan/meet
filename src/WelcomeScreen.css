@@ -3,6 +3,8 @@
     width: 100%;
     height: 100%;
     top: 0;
+    left: 0;
+    padding-top: 20%;
     }
 .login-button {
   color: #494949;
@@ -56,4 +58,7 @@
   width: 80%;
   height: 100%;
   text-align: center;
+}
+.button_cont {
+  margin-top: 35px;
 }
