@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 function WelcomeScreen(props) {
 return props.showWelcomeScreen ?
 (
-<Container className="welcomeScreen">
+<Container className="WelcomeScreen">
 <img alt="background" src={background} className="background" />
 <div className="WelcomeScreen">
 <h1>Welcome to the Meet app</h1>
