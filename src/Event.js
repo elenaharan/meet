@@ -28,6 +28,7 @@ class Event extends Component {
           this.state.showDetails && (
           <ul>
             <li className="event-description"> {event.description} </li>
+            <li className="event-email">{event.organizer.email}</li>
           </ul>
 
           )
