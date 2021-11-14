@@ -20,7 +20,7 @@ class Event extends Component {
     return (
       <div className="summary">
         <ul>
-          <li className="event-summary">{event.summary}</li>
+          <li className="event-summary"><b><i>{event.summary}</i></b></li>
           <li className="event-date">{event.start.dateTime}</li>
           <li className="event-location">{event.location}</li>
         </ul>
@@ -28,7 +28,7 @@ class Event extends Component {
           this.state.showDetails && (
           <ul>
             <li className="event-description"> {event.description} </li>
-            <li className="event-email">{event.organizer.email}</li>
+            <li className="event-email"><i>Contact email: </i>{event.organizer.email}</li>
           </ul>
 
           )
