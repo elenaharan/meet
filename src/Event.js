@@ -3,11 +3,15 @@ import Button from "react-bootstrap/Button";
 
 class Event extends Component {
   state = {
-    collapsed: true,
+    showDetails: false
   };
 
   handleOnClickButton = () => {
-    this.setState((prevState) => ({ collapsed: !prevState.collapsed }));
+    if (this.state.showDetails === true) {
+      this.setState({ showDetails: false });
+    } else {
+      this.setState({ showDetails: true });
+    }
   };
 
   render() {
@@ -20,23 +24,11 @@ class Event extends Component {
           <li className="event-date">{event.start.dateTime}</li>
           <li className="event-location">{event.location}</li>
         </ul>
-        <Button className="showMore" onClick={this.handleOnClickButton}>
-          Show details
+        <Button className='details-btn' onClick={() => this.handleOnClickButton()}>
+          {!this.state.showDetails ? 'Show Details' : 'Hide Details'}
         </Button>
-        {this.state.collapsed === false && (
-          <p className="event-description">{event.description}</p>
+        </div>
         )}
-        {this.state.collapsed === false && (
-          <Button
-            className="showLess"
-            onClick={() => this.handleOnClickButton()}
-          >
-            Hide details
-          </Button>
-        )}
-      </div>
-    );
-  }
 }
 
 export default Event;
