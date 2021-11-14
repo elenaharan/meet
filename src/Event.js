@@ -24,6 +24,14 @@ class Event extends Component {
           <li className="event-date">{event.start.dateTime}</li>
           <li className="event-location">{event.location}</li>
         </ul>
+        {
+          this.state.showDetails && (
+          <ul>
+            <li className="event-description"> {event.description} </li>
+          </ul>
+
+          )
+        }
         <Button className='details-btn' onClick={() => this.handleOnClickButton()}>
           {!this.state.showDetails ? 'Show Details' : 'Hide Details'}
         </Button>
