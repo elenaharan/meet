@@ -14,10 +14,10 @@ class Alert extends Component {
 
     render() {
         return (
-          <div className={`Alert ${this.props.text ? "visible" : "invisible"} ${this.type}`}>
+          <div className="Alert">
               <p style={this.getStyle()}>{this.props.text}</p>
           </div> 
-        );
+        )
     }
 }
 
@@ -30,8 +30,8 @@ class InfoAlert extends Alert {
 getStyle = () => {
     return {
       color: this.color,
-      //margin: '-15px',
-      //padding: '0px 10px'
+      margin: '-15px',
+      padding: '0px 10px'
     };   
 }
 }
