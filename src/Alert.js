@@ -30,8 +30,8 @@ class InfoAlert extends Alert {
 getStyle = () => {
     return {
       color: this.color,
-      margin: '-15px',
-      padding: '0px 10px'
+      //margin: '-15px',
+      //padding: '0px 10px'
     };   
 }
 }
