@@ -42,17 +42,19 @@ class CitySearch extends Component {
 
   render() {
     return (
-      <div className="CitySearch">
-        <InfoAlert text={this.state.infoText} />
-        <input
-          type="text"
-          className="city"
-          value={this.state.query}
-          onChange={(event) => this.handleInputChanged(event)}
-          onFocus={() => {
-            this.setState({ showSuggestions: true });
-          }}
-        />
+      <div className="city-search-wrapper">
+        <h2>Search</h2>
+        <div className="CitySearch">
+          <InfoAlert text={this.state.infoText} />
+          <input
+            type="text"
+            className="city"
+            value={this.state.query}
+            onChange={(event) => this.handleInputChanged(event)}
+            onFocus={() => {
+              this.setState({ showSuggestions: true });
+            }}
+          />
         <ul
           className="suggestions"
           style={this.state.showSuggestions ? {} : { display: "none" }}
@@ -70,6 +72,10 @@ class CitySearch extends Component {
           </li>
         </ul>
       </div>
+
+
+      </div>
+      
     );
   }
 }
