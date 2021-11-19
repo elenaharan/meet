@@ -46,9 +46,9 @@ getStyle = () => {
     return {
         color: this.color,
         flex: 1,
-        padding: '20px',
-        margin: '87px',
-        marginLeft: '420px'
+        //padding: '20px',
+        //margin: '87px',
+        //marginLeft: '420px'
     };
 }
 }
