@@ -15,7 +15,49 @@ Key Features: <br>
 5. Add an app shortcut to the home screen. <br>
 6. View a chart showing the number of upcoming events by city. <br>
 
-## User Stories <br>
+CLI Commands:
+
+```npm start``` <br>
+Runs the app in development mode.
+The app can be viewed at **http://localhost:3000**
+
+```npm build``` <br>
+Builds the app for production mode
+
+```npm run deploy``` <br>
+Deploys the app to GitHub pages
+
+```npm test``` <br>
+Starts the test runner in the interactive watch mode
+
+```npm test -- --coverage```<br>
+Displays test coverage for the app
+
+## Technical Requirements <br>
+● The app must be a React application.<br>
+● The app must be built using the TDD technique.<br>
+● The app must use the Google Calendar API and OAuth2 authentication flow.<br>
+● The app must use serverless functions (AWS lambda is preferred) for the authorization
+server instead of using a traditional server.<br>
+● The app’s code must be hosted in a Git repository on GitHub.<br>
+● The app must work on the latest versions of Chrome, Firefox, Safari, Edge, and Opera,
+as well as on IE11.<br>
+● The app must display well on all screen sizes (including mobile and tablet) widths of
+1920px and 320px.<br>
+● The app must pass Lighthouse’s PWA checklist.<br>
+● The app must work offline or in slow network conditions with the help of a service
+worker.<br>
+● Users may be able to install the app on desktop and add the app to their home screen
+on mobile.<br>
+● The app must be deployed on GitHub Pages.<br>
+● The API call must use React axios and async/await.<br>
+● The app must implement an alert system using an OOP approach to show information to
+the user.<br>
+● The app must make use of data visualization (recharts preferred).<br>
+● The app must be covered by tests with a coverage rate >= 90%.<br>
+● The app must be monitored using an online monitoring tool.<br>
+
+## User Stories (Gherkin syntax)<br>
 
 FEATURE 1: FILTER EVENTS BY CITY<br>
 As a user I should be able to filter events by city so that I can see the list of events in that city. <br>
@@ -82,29 +124,7 @@ GIVEN: user is viewing event details<br>
 WHEN: user clicks on the chart<br>
 THEN: user can see a chart representing upcoming events in the city<br><br>
 
-## Technical Requirements <br>
-● The app must be a React application.<br>
-● The app must be built using the TDD technique.<br>
-● The app must use the Google Calendar API and OAuth2 authentication flow.<br>
-● The app must use serverless functions (AWS lambda is preferred) for the authorization
-server instead of using a traditional server.<br>
-● The app’s code must be hosted in a Git repository on GitHub.<br>
-● The app must work on the latest versions of Chrome, Firefox, Safari, Edge, and Opera,
-as well as on IE11.<br>
-● The app must display well on all screen sizes (including mobile and tablet) widths of
-1920px and 320px.<br>
-● The app must pass Lighthouse’s PWA checklist.<br>
-● The app must work offline or in slow network conditions with the help of a service
-worker.<br>
-● Users may be able to install the app on desktop and add the app to their home screen
-on mobile.<br>
-● The app must be deployed on GitHub Pages.<br>
-● The API call must use React axios and async/await.<br>
-● The app must implement an alert system using an OOP approach to show information to
-the user.<br>
-● The app must make use of data visualization (recharts preferred).<br>
-● The app must be covered by tests with a coverage rate >= 90%.<br>
-● The app must be monitored using an online monitoring tool.<br>
+
 
 
 
