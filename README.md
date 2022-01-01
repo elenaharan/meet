@@ -4,7 +4,7 @@ This is a serverless, progressive web application (PWA) with React using a test-
 development (TDD) technique. The application uses the Google Calendar API to fetch
 upcoming events. <br>
 
-![LiveDemo]()
+![LiveDemo](https://github.com/elenaharan/meet/blob/main/demo/MeetLiveDemo.gif)
 
 ## Features & Requirements <br>
 Key Features: <br>
